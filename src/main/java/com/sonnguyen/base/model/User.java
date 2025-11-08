@@ -16,7 +16,9 @@ import java.util.Set;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(length = 36)
     private String id;
+    
     @Column(unique = true)
     private String username;
     private String password;
