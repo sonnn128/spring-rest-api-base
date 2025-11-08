@@ -3,8 +3,10 @@ package com.sonnguyen.base.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import java.time.LocalDateTime;
 
-import java.time.Instant;
 import java.util.Set;
 
 @Data
@@ -19,7 +21,12 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private Gender gender;
-    private Instant createdAt;
+
+    @CreationTimestamp
+    @Column(updatable = false)
+    private LocalDateTime createdAt;
+    @UpdateTimestamp
+    private LocalDateTime updatedAt;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -29,11 +36,5 @@ public class User {
     )
     private Set<Role> roles;
 
-
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT")
-    @PrePersist
-    public void afterPersist() {
-        this.createdAt = Instant.now();
-    }
 }
 
