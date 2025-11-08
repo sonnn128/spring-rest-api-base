@@ -1,5 +1,6 @@
 package com.sonnguyen.base.model;
 
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -16,6 +17,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
+    @Column(unique = true)
     private String username;
     private String password;
 
