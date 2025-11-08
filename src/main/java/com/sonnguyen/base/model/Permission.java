@@ -1,5 +1,6 @@
 package com.sonnguyen.base.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -13,6 +14,8 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 public class Permission implements GrantedAuthority {
     @Id
     private String id;
+
+    @Column(columnDefinition = "TEXT")
     private String description;
 
     @Override
