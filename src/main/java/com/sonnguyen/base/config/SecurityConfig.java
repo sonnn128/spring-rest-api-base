@@ -29,6 +29,7 @@ public class SecurityConfig {
                         authorizeHttpRequest.requestMatchers(
                                         "/api/v1/auth/register"
                                         , "/api/v1/auth/login"
+                                        , "/api/v1/auth/token"
                                         , "/api/v1/users/**"
                                         , "/api/v1/docs/**")
                                 .permitAll()

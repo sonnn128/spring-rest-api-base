@@ -35,4 +35,9 @@ public class AuthController {
                         .build()
         );
     }
+
+    @PostMapping("/token")
+    public ResponseEntity<?> token(@Valid @RequestBody AuthRequest authRequest) {
+        return ResponseEntity.ok().body(authService.login(authRequest.getUsername(), authRequest.getPassword()).getToken());
+    }
 }
