@@ -1,4 +1,3 @@
-name: base
 services:
   mysql:
     image: mysql:8.0
